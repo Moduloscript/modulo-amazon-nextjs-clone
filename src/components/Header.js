@@ -4,14 +4,14 @@ import {
   SearchIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/outline";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn, signOut } from "next-auth/client"
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
 
 
 function Header() {
-  const { data: session } = useSession();
+  const [session, loading] = useSession()
   const router = useRouter();
   const items = useSelector(selectItems)
 
